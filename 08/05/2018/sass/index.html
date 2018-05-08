@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang=es>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Sobre estos apuntesEstos apuntes son una recopilación de mi aprendizaje en el curso de codeschool. Es posible que algunas cosas no estén perfectas y agradecería cualquier crítica o corección para pode">
+<meta name="keywords" content="Sass,preprocesadores,css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Preprocesadores, aprendiendo Sass">
+<meta property="og:url" content="https://valkiriann.github.io/apuntes/08/05/2018/sass/index.html">
+<meta property="og:site_name" content="Apuntes de un unicornio">
+<meta property="og:description" content="Sobre estos apuntesEstos apuntes son una recopilación de mi aprendizaje en el curso de codeschool. Es posible que algunas cosas no estén perfectas y agradecería cualquier crítica o corección para pode">
+<meta property="og:locale" content="es">
+<meta property="og:updated_time" content="2018-02-22T09:54:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Preprocesadores, aprendiendo Sass">
+<meta name="twitter:description" content="Sobre estos apuntesEstos apuntes son una recopilación de mi aprendizaje en el curso de codeschool. Es posible que algunas cosas no estén perfectas y agradecería cualquier crítica o corección para pode">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/apuntes/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/apuntes/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/apuntes/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Preprocesadores, aprendiendo Sass</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/apuntes/css/style.css">
+    <!-- rss -->
+    
+    
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/apuntes/">Home</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/apuntes/08/05/2018/hexo-and-gh-pages/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Post anterior</span>
+      <span id="i-next" class="info" style="display:none;">Siguiente post</span>
+      <span id="i-top" class="info" style="display:none;">Volver arriba</span>
+      <span id="i-share" class="info" style="display:none;">compartir post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://valkiriann.github.io/apuntes/08/05/2018/sass/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://valkiriann.github.io/apuntes/08/05/2018/sass/&text=Preprocesadores, aprendiendo Sass"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://valkiriann.github.io/apuntes/08/05/2018/sass/&title=Preprocesadores, aprendiendo Sass"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://valkiriann.github.io/apuntes/08/05/2018/sass/&is_video=false&description=Preprocesadores, aprendiendo Sass"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Preprocesadores, aprendiendo Sass&body=Check out this article: https://valkiriann.github.io/apuntes/08/05/2018/sass/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://valkiriann.github.io/apuntes/08/05/2018/sass/&title=Preprocesadores, aprendiendo Sass"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://valkiriann.github.io/apuntes/08/05/2018/sass/&title=Preprocesadores, aprendiendo Sass"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://valkiriann.github.io/apuntes/08/05/2018/sass/&title=Preprocesadores, aprendiendo Sass"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://valkiriann.github.io/apuntes/08/05/2018/sass/&title=Preprocesadores, aprendiendo Sass"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://valkiriann.github.io/apuntes/08/05/2018/sass/&name=Preprocesadores, aprendiendo Sass&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Sobre-estos-apuntes"><span class="toc-number">1.</span> <span class="toc-text">Sobre estos apuntes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#¿Que-es-Sass"><span class="toc-number">2.</span> <span class="toc-text">¿Qué es Sass?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tipos-de-extensiones"><span class="toc-number">3.</span> <span class="toc-text">Tipos de extensiones</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Comentarios-en-Sass"><span class="toc-number">4.</span> <span class="toc-text">Comentarios en Sass</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#La-regla-import"><span class="toc-number">5.</span> <span class="toc-text">La regla @import</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Anidacion-de-selectores"><span class="toc-number">6.</span> <span class="toc-text">Anidación de selectores</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Preprocesadores, aprendiendo Sass
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Apuntes de un unicornio</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-05-08T07:56:24.193Z" itemprop="datePublished">08-05-2018</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/apuntes/tags/Sass/">Sass</a>, <a class="tag-link" href="/apuntes/tags/css/">css</a>, <a class="tag-link" href="/apuntes/tags/preprocesadores/">preprocesadores</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Sobre-estos-apuntes"><a href="#Sobre-estos-apuntes" class="headerlink" title="Sobre estos apuntes"></a>Sobre estos apuntes</h2><p>Estos apuntes son una recopilación de mi aprendizaje en el curso de codeschool. Es posible que algunas cosas no estén perfectas y agradecería cualquier crítica o corección para poder mejorar y tener siempre la información más precisa. Gracias</p>
+<h2 id="¿Que-es-Sass"><a href="#¿Que-es-Sass" class="headerlink" title="¿Qué es Sass?"></a>¿Qué es Sass?</h2><p>Sass viene de “Syntactically awesome stylesheets” (Hojas de estilo sintácticamente increíbles). Sass es un preprocesador de css. Los preprocesadores de css son herramientas que nos permiten escribir pseudo-código que luego se compila a css real. Al escribirlo parece css pero añade la posibilidad de usar atajos un funcionalidades prácticas.</p>
+<h2 id="Tipos-de-extensiones"><a href="#Tipos-de-extensiones" class="headerlink" title="Tipos de extensiones"></a>Tipos de extensiones</h2><p>Se puede escribir Sass en varios tipos de archivos, incluyendo el mismo .css, aunque igualmente debe ser compilado para que sea reconocible por un navegador. La extensión por defecto es .scss aunque también se usas .sass</p>
+<h2 id="Comentarios-en-Sass"><a href="#Comentarios-en-Sass" class="headerlink" title="Comentarios en Sass"></a>Comentarios en Sass</h2><p>En Sass podemos hacer comentarios de una línea o de varias en forma de bloque.<br><figure class="highlight plain"><figcaption><span>example.sass</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// Usamos dos barras para expresar comentarios de una línea</span><br><span class="line">// Podemos poner varias líneas siempre que pongamos las barras al empezar</span><br><span class="line">// Este tipo de comentarios no se compilan, </span><br><span class="line">// Son geniales documentar cosas que no tienen por qué aparecer en producción</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/* Usamos barra y asterisco para </span><br><span class="line">comentarios multilínea</span><br><span class="line">que además si que serán compilados y </span><br><span class="line">aparecerán en el css final</span><br><span class="line">*/</span><br></pre></td></tr></table></figure></p>
+<h2 id="La-regla-import"><a href="#La-regla-import" class="headerlink" title="La regla @import"></a>La regla @import</h2><figure class="highlight plain"><figcaption><span>example.css</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@import &quot;default.css&quot; // Funciona de forma similar a css</span><br></pre></td></tr></table></figure>
+<p>En css se suele evitar el uso de esta regla porque no es bueno para el rendimiento. Hay que esperar hasta que todos los archivos se descarguen antes de que los estilos sean aplicados.<br>En Sass podemos importar archivos .sass y .css y la importación se produce durante el proceso de compilación en vez de en el lado del cliente. Al usar @import en Sass no hay que especificar la extensión.<br>Por defecto, al hacer un @import y al compilar, pese a que se quede dentro del archivo en el que se ha importado, también se hará una compilación por separado del archivo importado. Si no queremos que esto ocurra debemos crear estos archivos con categoría de parciales. Para distinguir los archivos parciales de los que no lo son hay que poner un guión bajo al principio de su nombre.</p>
+<h2 id="Anidacion-de-selectores"><a href="#Anidacion-de-selectores" class="headerlink" title="Anidación de selectores"></a>Anidación de selectores</h2><p>Si en nuestro css encontramos patrones de selección podemos anidarlos en tabulaciones y el resultado al compilarse será el mismo pero la estructura sería más organizada y repetiríamos menos reglas.<br><figure class="highlight css"><figcaption><span>style.css</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.content</span> &#123;</span><br><span class="line">	<span class="attribute">background-color</span>: green;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">5px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.content</span> <span class="selector-tag">h2</span> &#123;</span><br><span class="line">	<span class="attribute">font-family</span>: sans-serif;</span><br><span class="line">    <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.content</span> <span class="selector-tag">p</span> &#123;</span><br><span class="line">	<span class="attribute">letter-spacing</span>: <span class="number">1px</span>;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">12px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><figure class="highlight plain"><figcaption><span>style.sass</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">.content &#123;</span><br><span class="line">	background-color: green;</span><br><span class="line">    padding: 5px;</span><br><span class="line">	h2 &#123;</span><br><span class="line">		font-family: sans-serif;</span><br><span class="line">    	color: red;</span><br><span class="line">	&#125;</span><br><span class="line">	p &#123;</span><br><span class="line">		letter-spacing: 1px;</span><br><span class="line">    	font-size: 12px;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure><br>Esto también se puede aplicar al anidar propiedades de guiones<br><figure class="highlight css"><figcaption><span>example.css</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.btn</span> &#123;</span><br><span class="line">	<span class="attribute">text-decoration</span>: none;</span><br><span class="line">	<span class="attribute">text-transform</span>: uppercase;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><figure class="highlight css"><figcaption><span>example.sass</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.btn</span> &#123;</span><br><span class="line">	<span class="attribute">text</span>: &#123;</span><br><span class="line">		decoration: none;</span><br><span class="line">		<span class="attribute">transform</span>: uppercase;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/apuntes/">Home</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Sobre-estos-apuntes"><span class="toc-number">1.</span> <span class="toc-text">Sobre estos apuntes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#¿Que-es-Sass"><span class="toc-number">2.</span> <span class="toc-text">¿Qué es Sass?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tipos-de-extensiones"><span class="toc-number">3.</span> <span class="toc-text">Tipos de extensiones</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Comentarios-en-Sass"><span class="toc-number">4.</span> <span class="toc-text">Comentarios en Sass</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#La-regla-import"><span class="toc-number">5.</span> <span class="toc-text">La regla @import</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Anidacion-de-selectores"><span class="toc-number">6.</span> <span class="toc-text">Anidación de selectores</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://valkiriann.github.io/apuntes/08/05/2018/sass/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://valkiriann.github.io/apuntes/08/05/2018/sass/&text=Preprocesadores, aprendiendo Sass"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://valkiriann.github.io/apuntes/08/05/2018/sass/&title=Preprocesadores, aprendiendo Sass"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://valkiriann.github.io/apuntes/08/05/2018/sass/&is_video=false&description=Preprocesadores, aprendiendo Sass"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Preprocesadores, aprendiendo Sass&body=Check out this article: https://valkiriann.github.io/apuntes/08/05/2018/sass/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://valkiriann.github.io/apuntes/08/05/2018/sass/&title=Preprocesadores, aprendiendo Sass"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://valkiriann.github.io/apuntes/08/05/2018/sass/&title=Preprocesadores, aprendiendo Sass"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://valkiriann.github.io/apuntes/08/05/2018/sass/&title=Preprocesadores, aprendiendo Sass"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://valkiriann.github.io/apuntes/08/05/2018/sass/&title=Preprocesadores, aprendiendo Sass"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://valkiriann.github.io/apuntes/08/05/2018/sass/&name=Preprocesadores, aprendiendo Sass&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Compartir</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Arriba</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 valkiriann (Ana Enríquez)
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/apuntes/">Home</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/apuntes/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/apuntes/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/apuntes/lib/justified-gallery/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/apuntes/lib/jquery/jquery.min.js"></script>
+<script src="/apuntes/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/apuntes/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-86660611-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+
