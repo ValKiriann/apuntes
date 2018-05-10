@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang=es>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Estos apuntes están pensados para trabajar en Debian 9 con Mariadb. MySQL WorkbenchMySQL-workbench es un paquete que podemos instalar por la terminal usando $ sudo apt install mysql-workbench.MySQL wo">
+<meta name="keywords" content="tutoriales,mysql,MySQL-workbench">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Master class sobre SQL">
+<meta property="og:url" content="https://valkiriann.github.io/apuntes/10/05/2018/mysql/index.html">
+<meta property="og:site_name" content="Apuntes de un unicornio">
+<meta property="og:description" content="Estos apuntes están pensados para trabajar en Debian 9 con Mariadb. MySQL WorkbenchMySQL-workbench es un paquete que podemos instalar por la terminal usando $ sudo apt install mysql-workbench.MySQL wo">
+<meta property="og:locale" content="es">
+<meta property="og:image" content="https://valkiriann.github.io/apuntes/10/05/2018/mysql/mysql-workbench.png">
+<meta property="og:image" content="https://valkiriann.github.io/apuntes/10/05/2018/mysql/mysqlWBAcces.png">
+<meta property="og:image" content="https://valkiriann.github.io/apuntes/10/05/2018/mysql/createATable.gif">
+<meta property="og:image" content="https://valkiriann.github.io/apuntes/10/05/2018/mysql/mariaDBPreview.png">
+<meta property="og:updated_time" content="2018-05-10T09:25:54.031Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Master class sobre SQL">
+<meta name="twitter:description" content="Estos apuntes están pensados para trabajar en Debian 9 con Mariadb. MySQL WorkbenchMySQL-workbench es un paquete que podemos instalar por la terminal usando $ sudo apt install mysql-workbench.MySQL wo">
+<meta name="twitter:image" content="https://valkiriann.github.io/apuntes/10/05/2018/mysql/mysql-workbench.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/apuntes/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/apuntes/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/apuntes/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Master class sobre SQL</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/apuntes/css/style.css">
+    <!-- rss -->
+    
+    
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/apuntes/">Home</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/apuntes/08/05/2018/sass/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Post anterior</span>
+      <span id="i-next" class="info" style="display:none;">Siguiente post</span>
+      <span id="i-top" class="info" style="display:none;">Volver arriba</span>
+      <span id="i-share" class="info" style="display:none;">compartir post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://valkiriann.github.io/apuntes/10/05/2018/mysql/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://valkiriann.github.io/apuntes/10/05/2018/mysql/&text=Master class sobre SQL"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://valkiriann.github.io/apuntes/10/05/2018/mysql/&title=Master class sobre SQL"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://valkiriann.github.io/apuntes/10/05/2018/mysql/&is_video=false&description=Master class sobre SQL"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Master class sobre SQL&body=Check out this article: https://valkiriann.github.io/apuntes/10/05/2018/mysql/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://valkiriann.github.io/apuntes/10/05/2018/mysql/&title=Master class sobre SQL"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://valkiriann.github.io/apuntes/10/05/2018/mysql/&title=Master class sobre SQL"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://valkiriann.github.io/apuntes/10/05/2018/mysql/&title=Master class sobre SQL"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://valkiriann.github.io/apuntes/10/05/2018/mysql/&title=Master class sobre SQL"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://valkiriann.github.io/apuntes/10/05/2018/mysql/&name=Master class sobre SQL&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL-Workbench"><span class="toc-number">1.</span> <span class="toc-text">MySQL Workbench</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Creacion-de-una-base-de-datos"><span class="toc-number">1.1.</span> <span class="toc-text">Creación de una base de datos</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Creacion-de-una-tabla-dentro-de-una-base-de-datos"><span class="toc-number">1.2.</span> <span class="toc-text">Creación de una tabla dentro de una base de datos</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Como-relacionar-tablas"><span class="toc-number">1.3.</span> <span class="toc-text">Cómo relacionar tablas</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Terminal"><span class="toc-number">2.</span> <span class="toc-text">Terminal</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Tabla-de-comandos"><span class="toc-number">2.1.</span> <span class="toc-text">Tabla de comandos</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Tipos-de-datos-en-SQL"><span class="toc-number">2.2.</span> <span class="toc-text">Tipos de datos en SQL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Listado-de-propiedades-de-campos"><span class="toc-number">2.3.</span> <span class="toc-text">Listado de propiedades de campos</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ejemplo-de-creacion-de-una-tabla-en-una-base-de-datos"><span class="toc-number">2.4.</span> <span class="toc-text">Ejemplo de creación de una tabla en una base de datos</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Leer-datos-de-una-tabla"><span class="toc-number">2.5.</span> <span class="toc-text">Leer datos de una tabla</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Creacion-de-usuarios-y-concesion-de-permisos"><span class="toc-number">2.6.</span> <span class="toc-text">Creación de usuarios y concesión de permisos.</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Master class sobre SQL
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Apuntes de un unicornio</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-05-10T08:57:01.000Z" itemprop="datePublished">10-05-2018</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/apuntes/tags/MySQL-workbench/">MySQL-workbench</a>, <a class="tag-link" href="/apuntes/tags/mysql/">mysql</a>, <a class="tag-link" href="/apuntes/tags/tutoriales/">tutoriales</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>Estos apuntes están pensados para trabajar en Debian 9 con Mariadb.</p>
+<h2 id="MySQL-Workbench"><a href="#MySQL-Workbench" class="headerlink" title="MySQL Workbench"></a>MySQL Workbench</h2><p><strong><em>MySQL-workbench</em></strong> es un paquete que podemos instalar por la terminal usando <code>$ sudo apt install mysql-workbench</code>.<br>MySQL workbench sirve para diseñar implementar y modificar nuestras bases de datos a través de una interfaz gráfica. También nos sirve para manipular los datos ya ingresados en las BBDD. Podemos ver los rendimientos y los cuellos de botella…</p>
+<img src="/apuntes/10/05/2018/mysql/mysql-workbench.png" title="mysql-workbench-preview">
+<h3 id="Creacion-de-una-base-de-datos"><a href="#Creacion-de-una-base-de-datos" class="headerlink" title="Creación de una base de datos"></a>Creación de una base de datos</h3><p>Para crear una base de datos en mysqlWorkbench lo primero que necesitamos es crear una conexión, haciendo click en el botón más podemos nombrarla, elegir el servidor y el usuario con el que ingresar. Si tiene contraseña nos la pedirá.<br>A partir de aquí podemos crear una nueva base de datos haciendo click en el cuarto icono de la barra de iconos de bajo de la barra de los menús, que representa a una  BBDD con un +. Nos pedirá escoger un nombre y un cotejamiento (latin-swedish-ci). Nos confirma el comando que va a ejecutar:</p>
+<pre><code>CREATE SCHEMA `sql_course_wb` ;
+</code></pre><img src="/apuntes/10/05/2018/mysql/mysqlWBAcces.png" title="entorno mysql workbench">
+<h3 id="Creacion-de-una-tabla-dentro-de-una-base-de-datos"><a href="#Creacion-de-una-tabla-dentro-de-una-base-de-datos" class="headerlink" title="Creación de una tabla dentro de una base de datos"></a>Creación de una tabla dentro de una base de datos</h3><img src="/apuntes/10/05/2018/mysql/createATable.gif" title="gif crear una tabla">
+<p>Para crear una tabla dentro de una base de datos, desplegamos el icono triangular a la izquierda del nombre de la base de datos a la que queremos añadirle la tabla, hacemos click derecho en tables y seleccionamos create new table. Aparecerá una ventana en la que elegir el nombre y un menú donde por columnas crear los campos con su número y marcando sus propiedades con checkboxes.</p>
+<h3 id="Como-relacionar-tablas"><a href="#Como-relacionar-tablas" class="headerlink" title="Cómo relacionar tablas"></a>Cómo relacionar tablas</h3><h2 id="Terminal"><a href="#Terminal" class="headerlink" title="Terminal"></a>Terminal</h2><p>Para entrar por la terminal escribimos <code>mysql -u root -p</code> ya que ahora mismo sólo se encuentra creado el usuario root y tiene contraseña<br>al entrar tendremos algo parecido a esto:<br><img src="/apuntes/10/05/2018/mysql/mariaDBPreview.png" title="preview terminal mariaDB"></p>
+<h3 id="Tabla-de-comandos"><a href="#Tabla-de-comandos" class="headerlink" title="Tabla de comandos"></a>Tabla de comandos</h3><table>
+<thead>
+<tr>
+<th>Acción</th>
+<th>comando</th>
+<th>Explicación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mostrar las bases de datos</td>
+<td><code>show databases;</code></td>
+<td>Muestra por consola en formato tabla las bases de datos que tenemos creadas</td>
+</tr>
+<tr>
+<td>Mostrar las tablas</td>
+<td><code>show tables;</code></td>
+<td>Muestra por consola las tablas que tiene la base de datos en la que nos encontramos</td>
+</tr>
+<tr>
+<td>Crear nueva base</td>
+<td><code>create database [nombre];</code></td>
+<td>crear una nueva base de datos</td>
+</tr>
+<tr>
+<td>Borrar una BBDD</td>
+<td><code>DROP DATABASE [nombre];</code></td>
+<td>Elimina una base de datos de mysql</td>
+</tr>
+<tr>
+<td>Usar una BBDD</td>
+<td><code>use [nombreBBDD];</code></td>
+<td>Elegir la base de datos sobre la que vamos a trabajar</td>
+</tr>
+<tr>
+<td>Crear una tabla</td>
+<td><code>CREATE TABLE [nombre]([campos])engine y charset</code></td>
+<td>Crea una tabla nueva en la base de datos en la que estamos y asignamos sus campos</td>
+</tr>
+<tr>
+<td>Muestra la estructura de una tabla</td>
+<td><code>DESCRIBE nombre</code></td>
+<td>Muestra la estructura de una tabla, con todos los campos y las propiedades de cada uno</td>
+</tr>
+<tr>
+<td>Crear usuario</td>
+<td><code>CREATE USER &#39;[usuario]&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;[password]&#39;;</code></td>
+<td>Crea un nuevo usuario</td>
+</tr>
+<tr>
+<td>Borrar un usuario</td>
+<td><code>DROP USER &#39;[nombre]&#39;@&#39;localhost&#39;;</code></td>
+<td>Borra un usuario de mysqli</td>
+</tr>
+<tr>
+<td>Concede permisos a un usuario</td>
+<td><code>GRANT [permiso] ON * . * TO &#39;[usuario]&#39;@&#39;localhost&#39;;</code></td>
+<td>Concede permisos a un usuario en bbdd.tablas. Los asteriscos son comodines que al usarlos significan TODO.</td>
+</tr>
+<tr>
+<td>Revocar permisos a un usuario</td>
+<td>`REVOKE [permiso] ON [nombreBBDD].[nombreTabla] FROM ‘[usuario]’@’localhost’</td>
+<td>Revocar permisos a un usuario</td>
+</tr>
+<tr>
+<td>Refrescar privilegios</td>
+<td><code>FLUSH PRIVILEGES;</code></td>
+<td>Refrescar todos los permisos</td>
+</tr>
+<tr>
+<td>Mostrar la versión</td>
+<td><code>SELECT version();</code></td>
+<td>Ver la versión actual de mysql</td>
+</tr>
+<tr>
+<td>Mostrar la fecha actual</td>
+<td><code>SELECT now();</code></td>
+<td>Ver la fecha y hora actuales en la base de datos</td>
+</tr>
+<tr>
+<td>Estado</td>
+<td><code>STATUS</code></td>
+<td>Nos muestra todos los datos de estado de la sesión</td>
+</tr>
+<tr>
+<td>Concatenar valores</td>
+<td><code>SELECT CONCAT(&#39;valor1&#39;, &#39;valor2&#39;);</code></td>
+<td>Concatena dos o más valores</td>
+</tr>
+<tr>
+<td>Longitud de una cadena</td>
+<td><code>SELECT LENGTH(&#39;cadena&#39;);</code></td>
+<td>Devuelve el tamaño de una cadena de texto</td>
+</tr>
+<tr>
+<td>evuelve el día de la semana de una fecha</td>
+<td><code>SELECT dayname(&#39;1980-02-12&#39;);</code></td>
+<td>Devuelve el día de la semana de una fecha</td>
+</tr>
+<tr>
+<td>Redondear números</td>
+<td>SELECT ROUND([número]);</td>
+<td>Devuelve un número redondeado</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Tipos-de-datos-en-SQL"><a href="#Tipos-de-datos-en-SQL" class="headerlink" title="Tipos de datos en SQL"></a>Tipos de datos en SQL</h3><table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INT</td>
+<td>Número entero</td>
+</tr>
+<tr>
+<td>TINYINT</td>
+<td>Entero muy pequeño</td>
+</tr>
+<tr>
+<td>SMALLINT</td>
+<td>Entero pequeño</td>
+</tr>
+<tr>
+<td>MEDIUMINT</td>
+<td>Entero mediano</td>
+</tr>
+<tr>
+<td>BIGINT</td>
+<td>Entero grande</td>
+</tr>
+<tr>
+<td>DECIMAL</td>
+<td>Números decimales</td>
+</tr>
+<tr>
+<td>FLOAT</td>
+<td>Números decimales de coma pequeña</td>
+</tr>
+<tr>
+<td>CHAR</td>
+<td>Almacena un único caracter</td>
+</tr>
+<tr>
+<td>VARCHAR</td>
+<td>Variable de caracteres, almacena más de 1</td>
+</tr>
+<tr>
+<td>BINARY</td>
+<td>Similar al tipo CHAR, pero almacena cadenas binarias de bytes</td>
+</tr>
+<tr>
+<td>TINYTEXT</td>
+<td>Almacena un texto pequeño</td>
+</tr>
+<tr>
+<td>TEXT</td>
+<td>Un texto de mayor longitud</td>
+</tr>
+<tr>
+<td>MEDIUMTEXT</td>
+<td>Almacena un texto mediano</td>
+</tr>
+<tr>
+<td>LONGTEXT</td>
+<td>Almacena un texto largo</td>
+</tr>
+<tr>
+<td>DATE</td>
+<td>Para almacenar fechas formato año-mes-día</td>
+</tr>
+<tr>
+<td>DATETIME</td>
+<td>Fechas en formato año-mes-día hora-minutos-segundos</td>
+</tr>
+<tr>
+<td>TIMESTAMP</td>
+<td>Los segundos pasados desde el unix timestamp</td>
+</tr>
+<tr>
+<td>YEAR</td>
+<td>Almacena sólo el año de una fecha</td>
+</tr>
+<tr>
+<td>TIME</td>
+<td>Almacena la hora en formato hora-minutos-segundos</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Listado-de-propiedades-de-campos"><a href="#Listado-de-propiedades-de-campos" class="headerlink" title="Listado de propiedades de campos"></a>Listado de propiedades de campos</h3><table>
+<thead>
+<tr>
+<th>Propiedad</th>
+<th>descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NOT_NULL</td>
+<td>El campo no es nulo</td>
+</tr>
+<tr>
+<td>AUTO_INCREMENT</td>
+<td>El campo se autoincrementa con cada entrada (perfecto para los índices)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Ejemplo-de-creacion-de-una-tabla-en-una-base-de-datos"><a href="#Ejemplo-de-creacion-de-una-tabla-en-una-base-de-datos" class="headerlink" title="Ejemplo de creación de una tabla en una base de datos"></a>Ejemplo de creación de una tabla en una base de datos</h3><pre><code>$ mysql -u root -p
+use sql_course;
+CREATE TABLE user_type (
+id INT NOT NULL AUTO_INCREMENT,
+name VARCHAR(20) NOT_NULL,
+PRIMARY KEY (id)
+)ENGINE=InnoDB DEFAULT CHARSET=latin1;
+</code></pre><p>Hasta que no ponemos ; no se cierra la instrucción. A la hora de crear un campo definimos el nombre y el tipo y después sus propiedades. Separamos la definición de cada campo con una coma. Debemos asignar que campo es el índice de la tabla. Por último hay que especificar el motor que utiliza y el tipo de caracteres.</p>
+<h3 id="Leer-datos-de-una-tabla"><a href="#Leer-datos-de-una-tabla" class="headerlink" title="Leer datos de una tabla"></a>Leer datos de una tabla</h3><p>Para leer los datos de una tabla debemos ejecutar <code>select</code> especificando los campos que queremos ver y la tabla de la que los queremos leer. Ejemplo para ver los usuarios en una base de datos de moodle paso a paso: </p>
+<pre><code>mysql -u root -p
+use [nombreBBDD];
+show tables;
+describe [nombreTabla];
+select [campo] from [tabla];
+</code></pre><h3 id="Creacion-de-usuarios-y-concesion-de-permisos"><a href="#Creacion-de-usuarios-y-concesion-de-permisos" class="headerlink" title="Creación de usuarios y concesión de permisos."></a>Creación de usuarios y concesión de permisos.</h3><p><a href="https://www.digitalocean.com/community/tutorials/crear-un-nuevo-usuario-y-otorgarle-permisos-en-mysql-es" target="_blank" rel="noopener">https://www.digitalocean.com/community/tutorials/crear-un-nuevo-usuario-y-otorgarle-permisos-en-mysql-es</a></p>
+<p><a href="http://www.vozidea.com/listar-todos-los-usuarios-mysql-o-mariadb" target="_blank" rel="noopener">http://www.vozidea.com/listar-todos-los-usuarios-mysql-o-mariadb</a></p>
+<p><a href="http://www3.uji.es/~galdu/ssh_vs_rsh/x165.html" target="_blank" rel="noopener">http://www3.uji.es/~galdu/ssh_vs_rsh/x165.html</a></p>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/apuntes/">Home</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL-Workbench"><span class="toc-number">1.</span> <span class="toc-text">MySQL Workbench</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Creacion-de-una-base-de-datos"><span class="toc-number">1.1.</span> <span class="toc-text">Creación de una base de datos</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Creacion-de-una-tabla-dentro-de-una-base-de-datos"><span class="toc-number">1.2.</span> <span class="toc-text">Creación de una tabla dentro de una base de datos</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Como-relacionar-tablas"><span class="toc-number">1.3.</span> <span class="toc-text">Cómo relacionar tablas</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Terminal"><span class="toc-number">2.</span> <span class="toc-text">Terminal</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Tabla-de-comandos"><span class="toc-number">2.1.</span> <span class="toc-text">Tabla de comandos</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Tipos-de-datos-en-SQL"><span class="toc-number">2.2.</span> <span class="toc-text">Tipos de datos en SQL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Listado-de-propiedades-de-campos"><span class="toc-number">2.3.</span> <span class="toc-text">Listado de propiedades de campos</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ejemplo-de-creacion-de-una-tabla-en-una-base-de-datos"><span class="toc-number">2.4.</span> <span class="toc-text">Ejemplo de creación de una tabla en una base de datos</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Leer-datos-de-una-tabla"><span class="toc-number">2.5.</span> <span class="toc-text">Leer datos de una tabla</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Creacion-de-usuarios-y-concesion-de-permisos"><span class="toc-number">2.6.</span> <span class="toc-text">Creación de usuarios y concesión de permisos.</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://valkiriann.github.io/apuntes/10/05/2018/mysql/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://valkiriann.github.io/apuntes/10/05/2018/mysql/&text=Master class sobre SQL"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://valkiriann.github.io/apuntes/10/05/2018/mysql/&title=Master class sobre SQL"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://valkiriann.github.io/apuntes/10/05/2018/mysql/&is_video=false&description=Master class sobre SQL"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Master class sobre SQL&body=Check out this article: https://valkiriann.github.io/apuntes/10/05/2018/mysql/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://valkiriann.github.io/apuntes/10/05/2018/mysql/&title=Master class sobre SQL"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://valkiriann.github.io/apuntes/10/05/2018/mysql/&title=Master class sobre SQL"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://valkiriann.github.io/apuntes/10/05/2018/mysql/&title=Master class sobre SQL"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://valkiriann.github.io/apuntes/10/05/2018/mysql/&title=Master class sobre SQL"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://valkiriann.github.io/apuntes/10/05/2018/mysql/&name=Master class sobre SQL&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Compartir</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Arriba</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 valkiriann (Ana Enríquez)
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/apuntes/">Home</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/apuntes/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/apuntes/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/apuntes/lib/justified-gallery/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/apuntes/lib/jquery/jquery.min.js"></script>
+<script src="/apuntes/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/apuntes/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-86660611-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+
